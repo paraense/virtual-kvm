@@ -17,27 +17,28 @@ public class Client {
                 .trim();
 
         try(Socket socket = new Socket(ip, PORT)) {
-
             Robot robot = new Robot();
             InputStreamReader inputStream = new InputStreamReader(socket.getInputStream());
             BufferedReader reader = new BufferedReader(inputStream);
 
             while (true) {
-                String positions = reader.readLine();
+                String event = reader.readLine();
 
-                if(positions == null) {
+                if(event == null) {
                     continue;
                 }
 
-                String[] coordinates = positions.split(";");
+                String[] coordinates = event.split(";");
                 int x = Integer.parseInt(coordinates[0]);
                 int y = Integer.parseInt(coordinates[1]);
 
                 robot.mouseMove(x, y);
+
             }
 
         } catch (IOException | AWTException e) {
             System.err.println("Ocorreram erros: "+ e.getMessage());
         }
     }
+
 }

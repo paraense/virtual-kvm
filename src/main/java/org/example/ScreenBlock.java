@@ -12,13 +12,14 @@ public class ScreenBlock extends JFrame {
 
     public ScreenBlock(String title, int width, int height) {
         super(title);
+        Panel panel = new InvisiblePanel(color, title);
         setLayout(new FlowLayout());
         setUndecorated(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBackground(color);
         setSize(width, height);
+        setBackground(color);
         setCursor(hideCursor);
-        setContentPane(new InvisiblePanel(color, title));
+        setContentPane(panel);
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -36,6 +37,4 @@ class InvisiblePanel extends Panel {
         label.setHorizontalAlignment(JLabel.CENTER);
         add(label, BorderLayout.CENTER);
     }
-
-
 }
