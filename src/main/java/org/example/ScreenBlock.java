@@ -2,10 +2,13 @@ package org.example;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class ScreenBlock extends JFrame {
 
     private static final Color color =  new Color(0, 0, 0, 150);
+    private static final BufferedImage arrow = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
+    private static final Cursor hideCursor = Toolkit.getDefaultToolkit().createCustomCursor(arrow, new java.awt.Point(0, 0), "hideCursor");
 
     public ScreenBlock(String title, int width, int height) {
         super(title);
@@ -14,6 +17,7 @@ public class ScreenBlock extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBackground(color);
         setSize(width, height);
+        setCursor(hideCursor);
         setContentPane(new InvisiblePanel(color, title));
         setLocationRelativeTo(null);
         setVisible(true);
