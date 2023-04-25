@@ -36,7 +36,7 @@ public class Main {
                out.write(mousePositions.getBytes());
                out.flush();
 
-               Thread.sleep(100);
+               Thread.sleep(2);
            }
 
        } catch (IOException e) {

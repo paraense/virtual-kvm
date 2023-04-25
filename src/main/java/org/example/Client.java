@@ -34,9 +34,6 @@ public class Client {
                 int y = Integer.parseInt(coordinates[1]);
 
                 robot.mouseMove(x, y);
-
-                System.out.println("Posição do mouse X: "+ x);
-                System.out.println("Posição do mouse y: "+ y);
             }
 
         } catch (IOException | AWTException e) {
