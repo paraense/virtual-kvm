@@ -1,4 +1,4 @@
-package org.example;
+package br.com.virtualKvm.client;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,18 +22,14 @@ public class Client {
             BufferedReader reader = new BufferedReader(inputStream);
 
             while (true) {
-                String event = reader.readLine();
+                String message = reader.readLine();
 
-                if(event == null) {
+                if(message == null) {
                     continue;
                 }
 
-                String[] coordinates = event.split(";");
-                int x = Integer.parseInt(coordinates[0]);
-                int y = Integer.parseInt(coordinates[1]);
-
-                robot.mouseMove(x, y);
-
+                Events event = Events.findByStringMessage(message);
+                event.apply(message, robot);
             }
 
         } catch (IOException | AWTException e) {

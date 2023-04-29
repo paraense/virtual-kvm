@@ -1,4 +1,4 @@
-package org.example;
+package br.com.virtualKvm.server;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,18 +10,24 @@ public class ScreenBlock extends JFrame {
     private static final BufferedImage arrow = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
     private static final Cursor hideCursor = Toolkit.getDefaultToolkit().createCustomCursor(arrow, new java.awt.Point(0, 0), "hideCursor");
 
+    private final Panel panel;
+
     public ScreenBlock(String title, int width, int height) {
         super(title);
-        Panel panel = new InvisiblePanel(color, title);
+        this.panel = new InvisiblePanel(color, title);
         setLayout(new FlowLayout());
         setUndecorated(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(width, height);
         setBackground(color);
         setCursor(hideCursor);
-        setContentPane(panel);
+        setContentPane(this.panel);
         setLocationRelativeTo(null);
         setVisible(true);
+    }
+
+    public Panel getPanel() {
+        return this.panel;
     }
 }
 

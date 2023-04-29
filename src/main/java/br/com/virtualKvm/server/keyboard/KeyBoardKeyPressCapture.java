@@ -1,4 +1,4 @@
-package org.example;
+package br.com.virtualKvm.server.keyboard;
 
 import javax.swing.*;
 import java.net.Socket;
